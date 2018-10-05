@@ -21,7 +21,7 @@ def craft_url(proto, ip, port):
 
 
 def get_url_from_datadir(datadir):
-    configfile = os.path.join(datadir, "bitcoin.conf")
+    configfile = os.path.join(datadir, "groestlcoin.conf")
 
     try:
         cfg = config.parse_file(configfile)
@@ -33,13 +33,13 @@ def get_url_from_datadir(datadir):
     try:
         port = cfg["rpcport"]
     except KeyError:
-        # If both regtest and testnet are set, bitcoind will not run.
+        # If both regtest and testnet are set, groestlcoind will not run.
         if "regtest" in cfg and cfg["regtest"] == "1":
-            port = 18332
+            port = 18443
         elif "testnet" in cfg and cfg["testnet"] == "1":
-            port = 18332
+            port = 17766
         else:
-            port = 8332
+            port = 1441
 
     return craft_url(proto, ip, port)
 
@@ -61,7 +61,7 @@ def get_auth_from_datadir(datadir):
     except FileNotFoundError:
         print("cookiefile not found, falling back to password authentication")
         # Fall back to credential-based authentication
-        configfile = os.path.join(datadir, "bitcoin.conf")
+        configfile = os.path.join(datadir, "groestlcoin.conf")
 
         try:
             cfg = config.parse_file(configfile)
@@ -99,7 +99,7 @@ class RPCConnectionError(RPCError):
     pass
 
 
-class BitcoinRPCClient(object):
+class GroestlcoinRPCClient(object):
     def __init__(self, url, auth):
         self._url = url
         self._headers = {
@@ -110,7 +110,7 @@ class BitcoinRPCClient(object):
     @staticmethod
     async def _craft_request(req, params, ident):
         d = {
-            # "jsonrpc": "2.0",  # Currently ignored by Bitcoin Core.
+            # "jsonrpc": "2.0",  # Currently ignored by Groestlcoin Core.
             "method": req,
         }
 

@@ -10,12 +10,13 @@ from macros import MIN_WINDOW_SIZE, DEFAULT_MODE
 import time
 
 splash_array = [
-    " BB            BB                                   BB    ",
-    " BB       BB   BB    BBBB    BBBB   BB  BB BB       BB    ",
-    " BBBBB        BBBB  BB     BB   BB      BBB BB   BBBBB    ",
-    " BB   BB  BB   BB   BB     BB   BB  BB  BB  BB  BB  BB    ",
-    " BBB  BB  BB   BB   BB     BB   BB  BB  BB  BB  BB  BB    ",
-    " BB BBB   BB    BB   BBBB    BBBB   BB  BB  BB    BBBB    ",
+    "                           B  B                     B     ",
+    "                           B  B          BB         B     ",
+    "      BBB BBB BBB BBB  BB BBB B  BBB BBB    BBB   BBB     ",
+    "      B B B   B B B B  B   B  B B    B B BB B  B B  B     ",
+    "      BBB B   BBB BB  BB   BB B  BBB BBB BB B  B  BBB     ",
+    "        B                                                 ",
+    "      BBB                                                 ",
     "                                                          ",
     "                               ---------------------------",
     "                                n   c   u   r   s   e   s ",

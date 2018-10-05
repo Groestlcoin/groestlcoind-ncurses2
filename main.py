@@ -79,8 +79,8 @@ def initialize():
     # parse commandline arguments
     parser = argparse.ArgumentParser()
     parser.add_argument("--datadir",
-                        help="path to bitcoin datadir [~/.bitcoin/]",
-                        default=os.path.expanduser("~/.bitcoin/"))
+                        help="path to groestlcoin datadir [~/.groestlcoin/]",
+                        default=os.path.expanduser("~/.groestlcoin/"))
     parser.add_argument("--no-splash",
                         help="whether to disable the splash screen [False]",
                         action='store_true',
@@ -90,7 +90,7 @@ def initialize():
 
     url = rpc.get_url_from_datadir(args.datadir)
     auth = rpc.get_auth_from_datadir(args.datadir)
-    client = rpc.BitcoinRPCClient(url, auth)
+    client = rpc.GroestlcoinRPCClient(url, auth)
 
     return client, args.nosplash
 
